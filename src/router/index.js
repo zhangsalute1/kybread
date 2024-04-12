@@ -26,6 +26,12 @@ const routes = [
         name: 'GenerateCodes',
         component: GenerateCodes,
     },
+    {
+        path: '/article/:year/:type/:textNumber',
+        name: 'ArticleView',
+        component: () => import('../components/ArticleView.vue')
+    }
+
 ];
 
 const router = createRouter({
