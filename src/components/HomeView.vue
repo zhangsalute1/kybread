@@ -3,7 +3,7 @@
         <div class="home-header">
             <span class="left-title">面包资料屋</span>
             <h1 class="main-title">考研英语历年真题解析 + 逐词逐句翻译</h1>
-            <a-button @click="showModal" class="unlock-button">未解锁</a-button>
+            <a-button @click="showModal" class="unlock-button">{{ isActivated ? '已激活' : '未激活' }}</a-button>
         </div>
         <p class="domain-name">KyBread.com</p>
 
@@ -47,12 +47,20 @@
 
 
 <script>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import axios from 'axios'
 import { message } from 'ant-design-vue';
 export default {
     name: 'HomeView',
     setup() {
+
+        onMounted(() => {
+            const storedActivationStatus = localStorage.getItem('isActivated');
+            if (storedActivationStatus === 'true') {
+                isActivated.value = true;
+            }
+        });
+        const isActivated = ref(false); // 添加激活状态变量
         const validationMessage = ref('');
         const isModalVisible = ref(false);
         const activationCode = ref('');
@@ -71,7 +79,8 @@ export default {
                 console.log(response, 'response');
 
                 if (response.data.success) {
-
+                    isActivated.value = true;
+                    localStorage.setItem('isActivated', 'true')
                     message.success(response.data.message);
                     isModalVisible.value = false;
                 } else {
@@ -90,7 +99,8 @@ export default {
             isModalVisible,
             activationCode,
             showModal,
-            validateCode
+            validateCode,
+            isActivated
         };
     },
 };
