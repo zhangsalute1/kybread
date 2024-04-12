@@ -36,7 +36,7 @@
         <a-modal v-model:open="isModalVisible" title="输入激活码" :width="300">
             <p>解锁全部文章（逐句讲解）</p>
             <a href="https://www.youpumao.xyz/um2mAr" target="_blank">激活码购买</a>
-            <a-input v-model="activationCode" placeholder="请输入激活码"></a-input>
+            <a-input v-model:value="activationCode" placeholder="请输入激活码"></a-input>
             <template #footer>
                 <a-button @click="isModalVisible = false">取消</a-button>
                 <a-button @click="validateCode" type="primary">验证</a-button>
@@ -48,18 +48,41 @@
 
 <script>
 import { ref } from 'vue'
+import axios from 'axios'
 export default {
     name: 'HomeView',
     setup() {
+        const validationMessage = ref(''); // 用于显示验证消息
         const isModalVisible = ref(false);
         const activationCode = ref('');
         function showModal() {
             isModalVisible.value = true;
         }
-        function validateCode() {
-            console.log("验证激活码:", activationCode.value);
-            // 在这里添加验证激活码的逻辑
-            // 若激活码正确，可以通过router.push跳转或者解锁内容
+        async function validateCode() {
+            console.log("发送的激活码：", activationCode.value);
+
+            try {
+                const response = await axios.post('http://localhost:3000/validate-code', {
+                    code: activationCode.value
+                }, {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                console.log(response, 'response');
+                // 假设后端返回的格式是 { success: boolean, message: string }
+                if (response.data.success) {
+                    // 激活码验证成功的逻辑
+                    alert(response.data.message); // 或者使用一个更友好的方式来显示这个消息
+                    isModalVisible.value = false; // 关闭模态框
+                } else {
+                    // 显示错误消息
+                    alert(response.data.message); // 或者使用一个更友好的方式来显示这个消息
+                }
+            } catch (error) {
+                console.error('激活码验证失败:', error);
+                alert('激活码验证出错，请稍后再试。');
+            }
         }
         const englishOneYears = [2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015, 2014, 2013, 2012, 2011, 2010];
         const englishTwoYears = [2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015, 2014, 2013, 2012, 2011, 2010];
