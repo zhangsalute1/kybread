@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../components/HomeView.vue'; // 确保你有这个组件
 
-// 你将需要为文章创建一个组件
 import ArticleView from '../components/ArticleView.vue'; // 创建这个组件
-
+import AdminLogin from '../components/AdminLogin.vue';
+import GenerateCodes from '../components/GenerateCodes.vue';
 const routes = [
     {
         path: '/',
@@ -15,6 +15,16 @@ const routes = [
         name: 'Article',
         component: ArticleView,
         props: true,
+    },
+    {
+        path: '/admin-login',
+        name: 'AdminLogin',
+        component: AdminLogin,
+    },
+    {
+        path: '/generate-codes',
+        name: 'GenerateCodes',
+        component: GenerateCodes,
     },
 ];
 

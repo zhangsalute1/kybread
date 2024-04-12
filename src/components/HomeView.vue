@@ -49,18 +49,17 @@
 <script>
 import { ref } from 'vue'
 import axios from 'axios'
+import { message } from 'ant-design-vue';
 export default {
     name: 'HomeView',
     setup() {
-        const validationMessage = ref(''); // 用于显示验证消息
+        const validationMessage = ref('');
         const isModalVisible = ref(false);
         const activationCode = ref('');
         function showModal() {
             isModalVisible.value = true;
         }
         async function validateCode() {
-            console.log("发送的激活码：", activationCode.value);
-
             try {
                 const response = await axios.post('http://localhost:3000/validate-code', {
                     code: activationCode.value
@@ -70,18 +69,17 @@ export default {
                     }
                 });
                 console.log(response, 'response');
-                // 假设后端返回的格式是 { success: boolean, message: string }
+
                 if (response.data.success) {
-                    // 激活码验证成功的逻辑
-                    alert(response.data.message); // 或者使用一个更友好的方式来显示这个消息
-                    isModalVisible.value = false; // 关闭模态框
+
+                    message.success(response.data.message);
+                    isModalVisible.value = false;
                 } else {
-                    // 显示错误消息
-                    alert(response.data.message); // 或者使用一个更友好的方式来显示这个消息
+                    message.error(response.data.message);
                 }
             } catch (error) {
                 console.error('激活码验证失败:', error);
-                alert('激活码验证出错，请稍后再试。');
+                message.error('激活码验证出错，请稍后再试。');
             }
         }
         const englishOneYears = [2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015, 2014, 2013, 2012, 2011, 2010];
