@@ -32,11 +32,10 @@
 </template>
 
 <script>
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, onMounted, watch } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { ArrowLeftOutlined } from '@ant-design/icons-vue';
-import { Menu } from 'ant-design-vue'; // 引入Menu组件
-// Importing JSON data
+import { Menu } from 'ant-design-vue';
 import Text1_2010_english1 from '../../article/2010年考研英语一Text1.json';
 import Text2_2010_english1 from '../../article/2010年考研英语一Text2.json';
 import Text3_2010_english1 from '../../article/2010年考研英语一Text3.json';
@@ -51,8 +50,8 @@ export default {
   name: 'ArticleView',
   components: {
     ArrowLeftOutlined,
-    Menu, // 注意，ant-design-vue 2.x版本中，Menu和MenuItem需要分别引入
-    MenuItem: Menu.Item, // 从Menu组件导入MenuItem
+    Menu,
+    MenuItem: Menu.Item,
   },
   setup() {
 
@@ -76,6 +75,7 @@ export default {
     const currentArticle = ref([]);
 
     onMounted(() => {
+      loadData()
       const year = route.params.year;
       console.log(year, 'year');
       const type = route.params.type;
@@ -87,7 +87,6 @@ export default {
       console.log(textNumber, 'textNumber');
       console.log(selectedTexts, 'selectedTexts');
       if (selectedTexts && selectedTexts.length > textNumber) {
-        debugger
         currentArticle.value = selectedTexts[textNumber].paragraphs.flatMap(paragraph => paragraph.sentences);
       }
     });
@@ -102,7 +101,23 @@ export default {
       selectedSentenceAnalysis.value = sentence.explainMd;
       isModalVisible.value = true;
     }
+    watch(() => route.params, (newParams, oldParams) => {
+      if (newParams && newParams.year && newParams.type && newParams.textNumber &&
+        (newParams.year !== oldParams.year || newParams.type !== oldParams.type || newParams.textNumber !== oldParams.textNumber)) {
+        loadData();
+      }
+    });
 
+
+    function loadData() {
+      const year = route.params.year;
+      const type = route.params.type;
+      const textNumber = route.params.textNumber - 1;
+      const selectedTexts = jsonDataMap[type]?.[year];
+      if (selectedTexts && selectedTexts.length > textNumber) {
+        currentArticle.value = selectedTexts[textNumber].paragraphs.flatMap(paragraph => paragraph.sentences);
+      }
+    }
     return {
       currentArticle,
       articleTitle,

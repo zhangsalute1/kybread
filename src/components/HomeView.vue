@@ -11,7 +11,7 @@
             <a-col :span="12">
                 <a-card title="考研英语一历年真题逐词逐句翻译解析">
                     <a-space direction="vertical">
-                        <router-link v-for="year in englishOneYears" :key="year" :to="`/article/english1/${year}`"
+                        <router-link v-for="year in englishOneYears" :key="year" :to="`/article/${year}/english1/1`"
                             tag="span">
                             <a-button>
                                 {{ year }}年考研英语一历年真题逐词逐句
@@ -23,7 +23,7 @@
             <a-col :span="12">
                 <a-card title="考研英语二历年真题逐词逐句翻译解析">
                     <a-space direction="vertical">
-                        <router-link v-for="year in englishTwoYears" :key="year" :to="`/article/english2/${year}`"
+                        <router-link v-for="year in englishTwoYears" :key="year" :to="`/article/${year}/english2/1`"
                             tag="span">
                             <a-button>
                                 {{ year }}年考研英语二历年真题逐词逐句
