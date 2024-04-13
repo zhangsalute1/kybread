@@ -11,26 +11,42 @@
             <a-col :span="12">
                 <a-card title="考研英语一历年真题逐词逐句翻译解析">
                     <a-space direction="vertical">
-                        <router-link v-for="year in englishOneYears" :key="year" :to="`/article/${year}/english1/1`"
-                            tag="span">
+                        <router-link v-for="year in englishOneYears" :key="year"
+                            :to="year === 2023 || isActivated ? `/article/${year}/english1/1` : '#'" tag="span"
+                            @click.native="year !== 2023 && !isActivated ? showModal() : null">
                             <a-button>
                                 {{ year }}年考研英语一历年真题逐词逐句
+                                <template v-if="year === 2023 || isActivated">
+                                    <unlock-outlined class="icon-unlocked" />
+                                </template>
+                                <template v-else>
+                                    <lock-outlined class="icon-locked" />
+                                </template>
                             </a-button>
                         </router-link>
                     </a-space>
                 </a-card>
+
             </a-col>
             <a-col :span="12">
-                <a-card title="考研英语二历年真题逐词逐句翻译解析">
+                <a-card title="考研英语一历年真题逐词逐句翻译解析">
                     <a-space direction="vertical">
-                        <router-link v-for="year in englishTwoYears" :key="year" :to="`/article/${year}/english2/1`"
-                            tag="span">
+                        <router-link v-for="year in englishOneYears" :key="year"
+                            :to="year === 2023 || isActivated ? `/article/${year}/english1/1` : '#'" tag="span"
+                            @click.native="year !== 2023 && !isActivated ? showModal() : null">
                             <a-button>
-                                {{ year }}年考研英语二历年真题逐词逐句
+                                {{ year }}年考研英语一历年真题逐词逐句
+                                <template v-if="year === 2023 || isActivated">
+                                    <unlock-outlined class="icon-unlocked" />
+                                </template>
+                                <template v-else>
+                                    <lock-outlined class="icon-locked" />
+                                </template>
                             </a-button>
                         </router-link>
                     </a-space>
                 </a-card>
+
             </a-col>
         </a-row>
         <a-modal v-model:open="isModalVisible" title="输入激活码" :width="300">
@@ -49,9 +65,15 @@
 <script>
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
-import { message } from 'ant-design-vue';
+import { message, Modal, Space, Card, Button, Input } from 'ant-design-vue';
+import { useRouter } from 'vue-router';
+import { LockOutlined, UnlockOutlined } from '@ant-design/icons-vue';
 export default {
     name: 'HomeView',
+    components: {
+        LockOutlined,
+        UnlockOutlined
+    },
     setup() {
 
         onMounted(() => {
@@ -107,6 +129,18 @@ export default {
 </script>
 
 <style scoped>
+.icon-locked {
+    color: red;
+    /* 锁定状态为红色 */
+    transition: transform 0.3s ease-in-out;
+}
+
+.icon-unlocked {
+    color: green;
+    /* 解锁状态为绿色 */
+    transition: transform 0.3s ease-in-out;
+}
+
 .home-header {
     display: flex;
     justify-content: space-between;
