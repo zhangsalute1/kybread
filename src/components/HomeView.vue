@@ -29,13 +29,13 @@
 
             </a-col>
             <a-col :span="12">
-                <a-card title="考研英语一历年真题逐词逐句翻译解析">
+                <a-card title="考研英语二历年真题逐词逐句翻译解析">
                     <a-space direction="vertical">
                         <router-link v-for="year in englishOneYears" :key="year"
-                            :to="year === 2023 || isActivated ? `/article/${year}/english1/1` : '#'" tag="span"
+                            :to="year === 2023 || isActivated ? `/article/${year}/english2/1` : '#'" tag="span"
                             @click.native="year !== 2023 && !isActivated ? showModal() : null">
                             <a-button>
-                                {{ year }}年考研英语一历年真题逐词逐句
+                                {{ year }}年考研英语二历年真题逐词逐句
                                 <template v-if="year === 2023 || isActivated">
                                     <unlock-outlined class="icon-unlocked" />
                                 </template>
