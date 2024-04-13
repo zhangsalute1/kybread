@@ -126,7 +126,6 @@ export default {
     color: #1890ff;
 }
 
-/* Adjusted for scoped styles */
 .home-view .a-col {
     display: flex;
     justify-content: center;
@@ -176,6 +175,7 @@ export default {
         /* 确保这个元素显示在底部 */
         text-align: center;
         /* 文本居中显示 */
+        margin: 0;
     }
 
     .main-title {

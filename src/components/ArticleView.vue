@@ -73,6 +73,7 @@ export default {
     };
 
     const currentArticle = ref([]);
+    const modalTitle = ref('');
 
     onMounted(() => {
       loadData()
@@ -99,6 +100,7 @@ export default {
 
     function showModal(sentence) {
       selectedSentenceAnalysis.value = sentence.explainMd;
+      modalTitle.value = sentence.text; // 设置模态框标题为当前句子
       isModalVisible.value = true;
     }
     watch(() => route.params, (newParams, oldParams) => {
@@ -126,7 +128,8 @@ export default {
       selectedSentenceAnalysis,
       goHome,
       route,
-      router
+      router,
+      modalTitle
     };
   },
 };
