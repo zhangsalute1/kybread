@@ -137,4 +137,77 @@ export default {
     color: #666;
     text-align: center;
 }
+
+@media (max-width: 600px) {
+    .ant-card {
+        width: 300px;
+    }
+
+    .ant-card-head {
+        width: 329px;
+    }
+
+    .home-container {
+        padding: 0 20px;
+    }
+
+    .home-header {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        /* 保持元素分散对齐 */
+        align-items: center;
+    }
+
+    .home-header> :first-child {
+        flex: 0 0 50%;
+        /* 第一个元素占据50%的宽度 */
+    }
+
+    .home-header> :last-child {
+        flex: 0 0 25%;
+        /* 第三个元素占据25%的宽度 */
+    }
+
+    .home-header> :nth-child(2) {
+        flex-basis: 100%;
+        /* 第二个元素独占一行 */
+        order: 2;
+        /* 确保这个元素显示在底部 */
+        text-align: center;
+        /* 文本居中显示 */
+    }
+
+    .main-title {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    .unlock-button {
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+
+    .domain-name {
+        font-size: 14px;
+        margin-bottom: 25px;
+    }
+
+    .home-view {
+        display: block;
+    }
+
+    .home-view .a-col {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .home-view .a-button {
+        font-size: 14px;
+        padding: 12px 0;
+        margin-bottom: 10px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
 </style>
