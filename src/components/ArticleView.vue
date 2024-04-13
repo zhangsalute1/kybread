@@ -28,11 +28,21 @@
 
     <a-modal v-model:open="isModalVisible" :title="modalTitle" @cancel="isModalVisible = false"
       :style="{ width: '80vw' }">
-      <p v-html="selectedSentenceHtml"></p>
+      <div class="modal-content">
+        <p v-html="selectedSentenceHtml"></p>
+        <!-- <div class="watermark watermark-center">kybread.com</div> -->
+        <div class="watermark watermark-top-center">KyBread.com</div>
+        <!-- <div class="watermark watermark-bottom-center">kybread.com</div> -->
+        <!-- <div class="watermark watermark-top-left">kybread.com</div> -->
+        <!-- <div class="watermark watermark-top-right">kybread.com</div> -->
+        <!-- <div class="watermark watermark-bottom-left">kybread.com</div> -->
+        <div class="watermark watermark-bottom-right">KyBread.com</div>
+      </div>
       <template #footer>
         <a-button @click="isModalVisible = false">关闭</a-button>
       </template>
     </a-modal>
+
   </div>
 </template>
 
@@ -308,14 +318,54 @@ export default {
 </script>
 
 <style scoped>
-/* .sentence {
-  cursor: pointer;
-  margin-bottom: 10px;
+.modal-content {
+  position: relative;
 }
 
-.sentence:hover {
-  text-decoration: underline;
-} */
+.watermark {
+  position: absolute;
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.5);
+  /* 轻微透明的黑色文字 */
+  /* transform: rotate(-35deg); */
+  white-space: nowrap;
+}
+
+.watermark-center {
+  top: 50%;
+  left: 50%;
+}
+
+.watermark-top-center {
+  top: 0;
+  left: 50%;
+}
+
+.watermark-bottom-center {
+  bottom: 0;
+  left: 50%;
+}
+
+.watermark-top-left {
+  top: 10px;
+  left: 10px;
+}
+
+.watermark-top-right {
+  top: 10px;
+  right: 10px;
+}
+
+.watermark-bottom-left {
+  bottom: 10px;
+  left: 10px;
+}
+
+.watermark-bottom-right {
+  bottom: 10px;
+  right: 10px;
+}
+
 
 .paragraph {
   margin-bottom: 20px;
