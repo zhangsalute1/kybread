@@ -23,7 +23,7 @@
       {{ sentence.text }}
     </div>
     <a-modal v-model:open="isModalVisible" :title="modalTitle" @cancel="isModalVisible = false">
-      <p v-html="selectedSentenceAnalysis"></p>
+      <p v-html="selectedSentenceHtml"></p>
       <template #footer>
         <a-button @click="isModalVisible = false">关闭</a-button>
       </template>
@@ -36,6 +36,7 @@ import { ref, computed, onMounted, watch } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { ArrowLeftOutlined } from '@ant-design/icons-vue';
 import { Menu } from 'ant-design-vue';
+import MarkdownIt from 'markdown-it';
 import Text1_2010_english1 from '../../article/2010年考研英语一Text1.json';
 import Text2_2010_english1 from '../../article/2010年考研英语一Text2.json';
 import Text3_2010_english1 from '../../article/2010年考研英语一Text3.json';
@@ -74,7 +75,8 @@ export default {
 
     const currentArticle = ref([]);
     const modalTitle = ref('');
-
+    const mdParser = new MarkdownIt();
+    const selectedSentenceHtml = ref('');
     onMounted(() => {
       loadData()
       const year = route.params.year;
@@ -100,7 +102,8 @@ export default {
 
     function showModal(sentence) {
       selectedSentenceAnalysis.value = sentence.explainMd;
-      modalTitle.value = sentence.text; // 设置模态框标题为当前句子
+      selectedSentenceHtml.value = mdParser.render(sentence.explainMd); // 解析 Markdown 为 HTML
+      modalTitle.value = sentence.text;
       isModalVisible.value = true;
     }
     watch(() => route.params, (newParams, oldParams) => {
@@ -129,7 +132,8 @@ export default {
       goHome,
       route,
       router,
-      modalTitle
+      modalTitle,
+      selectedSentenceHtml
     };
   },
 };
