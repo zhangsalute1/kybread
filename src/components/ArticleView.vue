@@ -19,9 +19,13 @@
     </a-menu>
 
     <h1>{{ articleTitle }}</h1>
-    <div v-for="(sentence, index) in currentArticle" :key="index" class="sentence" @click="showModal(sentence)">
-      {{ sentence.text }}
+    <div v-for="(paragraph, pIndex) in currentArticle.paragraphs" :key="pIndex" class="paragraph">
+      <span v-for="(sentence, sIndex) in paragraph.sentences" :key="sIndex" class="sentence"
+        @click="showModal(sentence)">
+        {{ sentence.text }}<span v-if="sIndex < paragraph.sentences.length - 1">. </span>
+      </span>
     </div>
+
     <a-modal v-model:open="isModalVisible" :title="modalTitle" @cancel="isModalVisible = false"
       :style="{ width: '80vw' }">
       <p v-html="selectedSentenceHtml"></p>
@@ -80,19 +84,6 @@ export default {
     const selectedSentenceHtml = ref('');
     onMounted(() => {
       loadData()
-      const year = route.params.year;
-      console.log(year, 'year');
-      const type = route.params.type;
-      console.log(type, 'type');
-      const textNumber = route.params.textNumber - 1;
-      console.log(route.params, 'route.params');
-      console.log(jsonDataMap, 'jsonDataMap');
-      const selectedTexts = jsonDataMap[type]?.[year];
-      console.log(textNumber, 'textNumber');
-      console.log(selectedTexts, 'selectedTexts');
-      if (selectedTexts && selectedTexts.length > textNumber) {
-        currentArticle.value = selectedTexts[textNumber].paragraphs.flatMap(paragraph => paragraph.sentences);
-      }
     });
 
     const articleTitle = computed(() => `${route.params.year}年考研英语${route.params.type === 'english1' ? '一' : '二'} Text${route.params.textNumber}`);
@@ -118,12 +109,20 @@ export default {
     function loadData() {
       const year = route.params.year;
       const type = route.params.type;
-      const textNumber = route.params.textNumber - 1;
+      const textNumber = route.params.textNumber - 1; // 文章索引，从0开始
       const selectedTexts = jsonDataMap[type]?.[year];
+
+      console.log("Selected Texts:", selectedTexts); // 查看加载的数据结构
+
       if (selectedTexts && selectedTexts.length > textNumber) {
-        currentArticle.value = selectedTexts[textNumber].paragraphs.flatMap(paragraph => paragraph.sentences);
+        currentArticle.value = selectedTexts[textNumber];
+        console.log("currentArticle.value:", currentArticle.value); // 确认数据已经加载
+      } else {
+        console.log("Data not found or invalid textNumber:", textNumber);
+        currentArticle.value = []; // 确保总是有合法的数组格式
       }
     }
+
     return {
       currentArticle,
       articleTitle,
@@ -141,12 +140,28 @@ export default {
 </script>
 
 <style scoped>
-.sentence {
+/* .sentence {
   cursor: pointer;
   margin-bottom: 10px;
 }
 
 .sentence:hover {
   text-decoration: underline;
+} */
+
+.paragraph {
+  margin-bottom: 20px;
+  /* 段落之间的间距 */
+}
+
+.sentence {
+  cursor: pointer;
+  display: inline;
+  /* 保证句子在一行显示 */
+}
+
+.sentence:hover {
+  text-decoration: underline;
+  /* 鼠标悬停时下划线 */
 }
 </style>
