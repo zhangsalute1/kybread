@@ -22,7 +22,8 @@
     <div v-for="(sentence, index) in currentArticle" :key="index" class="sentence" @click="showModal(sentence)">
       {{ sentence.text }}
     </div>
-    <a-modal v-model:open="isModalVisible" :title="modalTitle" @cancel="isModalVisible = false">
+    <a-modal v-model:open="isModalVisible" :title="modalTitle" @cancel="isModalVisible = false"
+      :style="{ width: '80vw' }">
       <p v-html="selectedSentenceHtml"></p>
       <template #footer>
         <a-button @click="isModalVisible = false">关闭</a-button>
