@@ -42,6 +42,7 @@ import { useRouter, useRoute } from 'vue-router';
 import { ArrowLeftOutlined } from '@ant-design/icons-vue';
 import { Menu } from 'ant-design-vue';
 import MarkdownIt from 'markdown-it';
+//2010
 import Text1_2010_english1 from '../../article/2010年考研英语一Text1.json';
 import Text2_2010_english1 from '../../article/2010年考研英语一Text2.json';
 import Text3_2010_english1 from '../../article/2010年考研英语一Text3.json';
@@ -51,6 +52,148 @@ import Text1_2010_english2 from '../../article/2010年考研英语二Text1.json'
 import Text2_2010_english2 from '../../article/2010年考研英语二Text2.json';
 import Text3_2010_english2 from '../../article/2010年考研英语二Text3.json';
 import Text4_2010_english2 from '../../article/2010年考研英语二Text4.json';
+// 2011
+import Text1_2011_english1 from '../../article/2011年考研英语一Text1.json';
+import Text2_2011_english1 from '../../article/2011年考研英语一Text2.json';
+import Text3_2011_english1 from '../../article/2011年考研英语一Text3.json';
+import Text4_2011_english1 from '../../article/2011年考研英语一Text4.json';
+
+import Text1_2011_english2 from '../../article/2011年考研英语二Text1.json';
+import Text2_2011_english2 from '../../article/2011年考研英语二Text2.json';
+import Text3_2011_english2 from '../../article/2011年考研英语二Text3.json';
+import Text4_2011_english2 from '../../article/2011年考研英语二Text4.json';
+
+// 2012
+import Text1_2012_english1 from '../../article/2012年考研英语一Text1.json';
+import Text2_2012_english1 from '../../article/2012年考研英语一Text2.json';
+import Text3_2012_english1 from '../../article/2012年考研英语一Text3.json';
+import Text4_2012_english1 from '../../article/2012年考研英语一Text4.json';
+
+import Text1_2012_english2 from '../../article/2012年考研英语二Text1.json';
+import Text2_2012_english2 from '../../article/2012年考研英语二Text2.json';
+import Text3_2012_english2 from '../../article/2012年考研英语二Text3.json';
+import Text4_2012_english2 from '../../article/2012年考研英语二Text4.json';
+
+// 2013
+import Text1_2013_english1 from '../../article/2013年考研英语一Text1.json';
+import Text2_2013_english1 from '../../article/2013年考研英语一Text2.json';
+import Text3_2013_english1 from '../../article/2013年考研英语一Text3.json';
+import Text4_2013_english1 from '../../article/2013年考研英语一Text4.json';
+
+import Text1_2013_english2 from '../../article/2013年考研英语二Text1.json';
+import Text2_2013_english2 from '../../article/2013年考研英语二Text2.json';
+import Text3_2013_english2 from '../../article/2013年考研英语二Text3.json';
+import Text4_2013_english2 from '../../article/2013年考研英语二Text4.json';
+
+// 2014
+import Text1_2014_english1 from '../../article/2014年考研英语一Text1.json';
+import Text2_2014_english1 from '../../article/2014年考研英语一Text2.json';
+import Text3_2014_english1 from '../../article/2014年考研英语一Text3.json';
+import Text4_2014_english1 from '../../article/2014年考研英语一Text4.json';
+
+import Text1_2014_english2 from '../../article/2014年考研英语二Text1.json';
+import Text2_2014_english2 from '../../article/2014年考研英语二Text2.json';
+import Text3_2014_english2 from '../../article/2014年考研英语二Text3.json';
+import Text4_2014_english2 from '../../article/2014年考研英语二Text4.json';
+
+// 2015
+import Text1_2015_english1 from '../../article/2015年考研英语一Text1.json';
+import Text2_2015_english1 from '../../article/2015年考研英语一Text2.json';
+import Text3_2015_english1 from '../../article/2015年考研英语一Text3.json';
+import Text4_2015_english1 from '../../article/2015年考研英语一Text4.json';
+
+import Text1_2015_english2 from '../../article/2015年考研英语二Text1.json';
+import Text2_2015_english2 from '../../article/2015年考研英语二Text2.json';
+import Text3_2015_english2 from '../../article/2015年考研英语二Text3.json';
+import Text4_2015_english2 from '../../article/2015年考研英语二Text4.json';
+
+// 2016
+import Text1_2016_english1 from '../../article/2016年考研英语一Text1.json';
+import Text2_2016_english1 from '../../article/2016年考研英语一Text2.json';
+import Text3_2016_english1 from '../../article/2016年考研英语一Text3.json';
+import Text4_2016_english1 from '../../article/2016年考研英语一Text4.json';
+
+import Text1_2016_english2 from '../../article/2016年考研英语二Text1.json';
+import Text2_2016_english2 from '../../article/2016年考研英语二Text2.json';
+import Text3_2016_english2 from '../../article/2016年考研英语二Text3.json';
+import Text4_2016_english2 from '../../article/2016年考研英语二Text4.json';
+
+// 2017
+import Text1_2017_english1 from '../../article/2017年考研英语一Text1.json';
+import Text2_2017_english1 from '../../article/2017年考研英语一Text2.json';
+import Text3_2017_english1 from '../../article/2017年考研英语一Text3.json';
+import Text4_2017_english1 from '../../article/2017年考研英语一Text4.json';
+
+import Text1_2017_english2 from '../../article/2017年考研英语二Text1.json';
+import Text2_2017_english2 from '../../article/2017年考研英语二Text2.json';
+import Text3_2017_english2 from '../../article/2017年考研英语二Text3.json';
+import Text4_2017_english2 from '../../article/2017年考研英语二Text4.json';
+
+// 2018
+import Text1_2018_english1 from '../../article/2018年考研英语一Text1.json';
+import Text2_2018_english1 from '../../article/2018年考研英语一Text2.json';
+import Text3_2018_english1 from '../../article/2018年考研英语一Text3.json';
+import Text4_2018_english1 from '../../article/2018年考研英语一Text4.json';
+
+import Text1_2018_english2 from '../../article/2018年考研英语二Text1.json';
+import Text2_2018_english2 from '../../article/2018年考研英语二Text2.json';
+import Text3_2018_english2 from '../../article/2018年考研英语二Text3.json';
+import Text4_2018_english2 from '../../article/2018年考研英语二Text4.json';
+
+// 2019
+import Text1_2019_english1 from '../../article/2019年考研英语一Text1.json';
+import Text2_2019_english1 from '../../article/2019年考研英语一Text2.json';
+import Text3_2019_english1 from '../../article/2019年考研英语一Text3.json';
+import Text4_2019_english1 from '../../article/2019年考研英语一Text4.json';
+
+import Text1_2019_english2 from '../../article/2019年考研英语二Text1.json';
+import Text2_2019_english2 from '../../article/2019年考研英语二Text2.json';
+import Text3_2019_english2 from '../../article/2019年考研英语二Text3.json';
+import Text4_2019_english2 from '../../article/2019年考研英语二Text4.json';
+
+// 2020
+import Text1_2020_english1 from '../../article/2020年考研英语一Text1.json';
+import Text2_2020_english1 from '../../article/2020年考研英语一Text2.json';
+import Text3_2020_english1 from '../../article/2020年考研英语一Text3.json';
+import Text4_2020_english1 from '../../article/2020年考研英语一Text4.json';
+
+import Text1_2020_english2 from '../../article/2020年考研英语二Text1.json';
+import Text2_2020_english2 from '../../article/2020年考研英语二Text2.json';
+import Text3_2020_english2 from '../../article/2020年考研英语二Text3.json';
+import Text4_2020_english2 from '../../article/2020年考研英语二Text4.json';
+
+// 2021
+import Text1_2021_english1 from '../../article/2021年考研英语一Text1.json';
+import Text2_2021_english1 from '../../article/2021年考研英语一Text2.json';
+import Text3_2021_english1 from '../../article/2021年考研英语一Text3.json';
+import Text4_2021_english1 from '../../article/2021年考研英语一Text4.json';
+
+import Text1_2021_english2 from '../../article/2021年考研英语二Text1.json';
+import Text2_2021_english2 from '../../article/2021年考研英语二Text2.json';
+import Text3_2021_english2 from '../../article/2021年考研英语二Text3.json';
+import Text4_2021_english2 from '../../article/2021年考研英语二Text4.json';
+
+// 2022
+import Text1_2022_english1 from '../../article/2022年考研英语一Text1.json';
+import Text2_2022_english1 from '../../article/2022年考研英语一Text2.json';
+import Text3_2022_english1 from '../../article/2022年考研英语一Text3.json';
+import Text4_2022_english1 from '../../article/2022年考研英语一Text4.json';
+
+import Text1_2022_english2 from '../../article/2022年考研英语二Text1.json';
+import Text2_2022_english2 from '../../article/2022年考研英语二Text2.json';
+import Text3_2022_english2 from '../../article/2022年考研英语二Text3.json';
+import Text4_2022_english2 from '../../article/2022年考研英语二Text4.json';
+
+// 2023
+import Text1_2023_english1 from '../../article/2023年考研英语一Text1.json';
+import Text2_2023_english1 from '../../article/2023年考研英语一Text2.json';
+import Text3_2023_english1 from '../../article/2023年考研英语一Text3.json';
+import Text4_2023_english1 from '../../article/2023年考研英语一Text4.json';
+
+import Text1_2023_english2 from '../../article/2023年考研英语二Text1.json';
+import Text2_2023_english2 from '../../article/2023年考研英语二Text2.json';
+import Text3_2023_english2 from '../../article/2023年考研英语二Text3.json';
+import Text4_2023_english2 from '../../article/2023年考研英语二Text4.json';
 
 export default {
   name: 'ArticleView',
@@ -70,13 +213,38 @@ export default {
     const jsonDataMap = {
       english1: {
         '2010': [Text1_2010_english1, Text2_2010_english1, Text3_2010_english1, Text4_2010_english1],
-        // Include data for other years
+        '2011': [Text1_2011_english1, Text2_2011_english1, Text3_2011_english1, Text4_2011_english1],
+        '2012': [Text1_2012_english1, Text2_2012_english1, Text3_2012_english1, Text4_2012_english1],
+        '2013': [Text1_2013_english1, Text2_2013_english1, Text3_2013_english1, Text4_2013_english1],
+        '2014': [Text1_2014_english1, Text2_2014_english1, Text3_2014_english1, Text4_2014_english1],
+        '2015': [Text1_2015_english1, Text2_2015_english1, Text3_2015_english1, Text4_2015_english1],
+        '2016': [Text1_2016_english1, Text2_2016_english1, Text3_2016_english1, Text4_2016_english1],
+        '2017': [Text1_2017_english1, Text2_2017_english1, Text3_2017_english1, Text4_2017_english1],
+        '2018': [Text1_2018_english1, Text2_2018_english1, Text3_2018_english1, Text4_2018_english1],
+        '2019': [Text1_2019_english1, Text2_2019_english1, Text3_2019_english1, Text4_2019_english1],
+        '2020': [Text1_2020_english1, Text2_2020_english1, Text3_2020_english1, Text4_2020_english1],
+        '2021': [Text1_2021_english1, Text2_2021_english1, Text3_2021_english1, Text4_2021_english1],
+        '2022': [Text1_2022_english1, Text2_2022_english1, Text3_2022_english1, Text4_2022_english1],
+        '2023': [Text1_2023_english1, Text2_2023_english1, Text3_2023_english1, Text4_2023_english1]
       },
       english2: {
         '2010': [Text1_2010_english2, Text2_2010_english2, Text3_2010_english2, Text4_2010_english2],
-        // Include data for other years
-      },
+        '2011': [Text1_2011_english2, Text2_2011_english2, Text3_2011_english2, Text4_2011_english2],
+        '2012': [Text1_2012_english2, Text2_2012_english2, Text3_2012_english2, Text4_2012_english2],
+        '2013': [Text1_2013_english2, Text2_2013_english2, Text3_2013_english2, Text4_2013_english2],
+        '2014': [Text1_2014_english2, Text2_2014_english2, Text3_2014_english2, Text4_2014_english2],
+        '2015': [Text1_2015_english2, Text2_2015_english2, Text3_2015_english2, Text4_2015_english2],
+        '2016': [Text1_2016_english2, Text2_2016_english2, Text3_2016_english2, Text4_2016_english2],
+        '2017': [Text1_2017_english2, Text2_2017_english2, Text3_2017_english2, Text4_2017_english2],
+        '2018': [Text1_2018_english2, Text2_2018_english2, Text3_2018_english2, Text4_2018_english2],
+        '2019': [Text1_2019_english2, Text2_2019_english2, Text3_2019_english2, Text4_2019_english2],
+        '2020': [Text1_2020_english2, Text2_2020_english2, Text3_2020_english2, Text4_2020_english2],
+        '2021': [Text1_2021_english2, Text2_2021_english2, Text3_2021_english2, Text4_2021_english2],
+        '2022': [Text1_2022_english2, Text2_2022_english2, Text3_2022_english2, Text4_2022_english2],
+        '2023': [Text1_2023_english2, Text2_2023_english2, Text3_2023_english2, Text4_2023_english2]
+      }
     };
+
 
     const currentArticle = ref([]);
     const modalTitle = ref('');
