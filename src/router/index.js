@@ -1,9 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import HomeView from '../components/HomeView.vue'; // 确保你有这个组件
+import HomeView from '../components/HomeView.vue';
 
-import ArticleView from '../components/ArticleView.vue'; // 创建这个组件
-import AdminLogin from '../components/AdminLogin.vue';
-import GenerateCodes from '../components/GenerateCodes.vue';
+import ArticleView from '../components/ArticleView.vue';
+
 const routes = [
     {
         path: '/',
@@ -17,16 +16,7 @@ const routes = [
         props: true,
         meta: { requiresAuth: true }  // 添加这行以确保需要验证
     },
-    {
-        path: '/admin-login',
-        name: 'AdminLogin',
-        component: AdminLogin,
-    },
-    {
-        path: '/generate-codes',
-        name: 'GenerateCodes',
-        component: GenerateCodes,
-    },
+
     {
         path: '/article/:year/:type/:textNumber',
         name: 'ArticleView',

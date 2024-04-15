@@ -64,10 +64,10 @@
 
 <script>
 import { ref, onMounted } from 'vue'
-import axios from 'axios'
 import { message, Modal, Space, Card, Button, Input } from 'ant-design-vue';
 import { useRouter } from 'vue-router';
 import { LockOutlined, UnlockOutlined } from '@ant-design/icons-vue';
+
 export default {
     name: 'HomeView',
     components: {
@@ -83,38 +83,40 @@ export default {
             }
         });
         const isActivated = ref(false); // 添加激活状态变量
-        const validationMessage = ref('');
         const isModalVisible = ref(false);
         const activationCode = ref('');
+        const activationCodes = ref([
+            "QW3FYMSDPY4XAC3",
+            "LJ81B5HX1TJZCHP",
+            "66E4HIS4XMCXG5H",
+            "HRB6ORVJEMJIMZ8",
+            "BIG1ZUHA551D56H",
+            "7FY89KKAYAJ8JYA",
+            "3MO7538GK8UCIHK",
+            "CV6N6YULCZNTBBS",
+            "HDUCRVV5AQPCYIE",
+            "Q2IHOHVWG11VY63"
+        ]
+        );
+
         function showModal() {
             isModalVisible.value = true;
         }
-        async function validateCode() {
-            try {
-                const response = await axios.post('http://localhost:3000/validate-code', {
-                    code: activationCode.value
-                }, {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                });
-                console.log(response, 'response');
 
-                if (response.data.success) {
-                    isActivated.value = true;
-                    localStorage.setItem('isActivated', 'true')
-                    message.success(response.data.message);
-                    isModalVisible.value = false;
-                } else {
-                    message.error(response.data.message);
-                }
-            } catch (error) {
-                console.error('激活码验证失败:', error);
-                message.error('激活码验证出错，请稍后再试。');
+        function validateCode() {
+            if (activationCodes.value.includes(activationCode.value)) {
+                isActivated.value = true;
+                localStorage.setItem('isActivated', 'true');
+                message.success('激活成功！');
+                isModalVisible.value = false;
+            } else {
+                message.error('激活码无效，请重新输入！');
             }
         }
+
         const englishOneYears = [2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015, 2014, 2013, 2012, 2011, 2010];
         const englishTwoYears = [2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015, 2014, 2013, 2012, 2011, 2010];
+
         return {
             englishOneYears,
             englishTwoYears,
@@ -122,7 +124,8 @@ export default {
             activationCode,
             showModal,
             validateCode,
-            isActivated
+            isActivated,
+            activationCodes
         };
     },
 };
